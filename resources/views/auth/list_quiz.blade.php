@@ -38,6 +38,7 @@
 @endsection
 
 @section('content')
+    @if (Auth::user()->level == 1)
     <form action="{{route("quiz/add_quiz")}}" enctype="multipart/form-data" method="POST" class="mt-5">
         @csrf
         <div class="custom-file">
@@ -58,6 +59,7 @@
         <div class="mt-1 d-flex justify-content-center align-items-center">
             <button type="submit" class="btn btn-primary">Đăng câu đố</button>
         </div>
+        @endif
         <div class="mt-5 tableFixHead">
             <table class="table table-ellipsis">
                 <thead>

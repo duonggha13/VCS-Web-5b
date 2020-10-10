@@ -16,9 +16,11 @@
             <td>{{$user->name}}</td>
             <td>{{$user->email}}</td>
             <td>{{$user->phone_number}}</td>
-            <td><button herf="messages/{{$user->username}}" title="Nhắn tin"><i class="fas fa-comment-dots"></i></button></td>
-            <td><button herf="edit/{{$user->username}}" title="Sửa thông tin"><i class="fas fa-user-edit"></i></button></td>
-            <td><button herf="dele/{{$user->username}}" title="Xóa tài khoản"><i class="far fa-trash-alt"></i></button></td>
+            <td><button title="Nhắn tin"><a  href="/messages/{{$user->username}}"><i class="fas fa-comment-dots"></i></a></button></td>
+            @if (Auth::user()->level == 1)
+            <td><button title="Sửa thông tin"><a href="/user/edit/{{$user->username}}"><i class="fas fa-user-edit"></i><a></a></button></td>
+            <td><button title="Xóa tài khoản"><a href="/user/dele/{{$user->username}}"><i class="far fa-trash-alt"></i></a></button></td>
+            @endif
         </tr>
         </tbody>
     </table>

@@ -18,8 +18,11 @@ class UserController extends Controller
         return view('auth.profile_user');
     }
     public function getDetailUser($username) {
-        $user = User::where('username',$username)->first();
-        return view('auth.detail_user', ['user'=>$user]);
+        if ($username != Auth::user()->username) {
+            $user = User::where('username', $username)->first();
+            return view('auth.detail_user', ['user' => $user]);
+        }
+        else return view('auth.profile_user');
     }
     public function getAddUser() {
         return view('auth.add_user');
@@ -35,5 +38,9 @@ class UserController extends Controller
         $user-> remember_token = 'NULL';
         $user->save();
         return redirect()->action('\App\Http\Controllers\UserController@getListUser');
+    }
+    public function editUser($username) {
+        $user = User::where('username', $username)->first();
+        return view('auth.edit_user',['user'=> $user]);
     }
 }

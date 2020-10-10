@@ -26,6 +26,7 @@
     </style>
 @endsection
 @section('content')
+    @if (Auth::user()->level == 1)
     <form action="{{route("exercise/add_exercise")}}" enctype="multipart/form-data" method="POST" class="mt-5">
         @csrf
         <div class="form-group">
@@ -43,10 +44,11 @@
                 $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
             });
         </script>
-        <div class="mt-1 d-flex justify-content-center align-items-center">
+        <div class="mt-3 d-flex justify-content-center align-items-center">
             <button type="submit" class="btn btn-primary">Đăng bài</button>
         </div>
     </form>
+    @endif
     <div class="table-responsive mt-5 tableFixHead">
         <table class="table">
             <thead>

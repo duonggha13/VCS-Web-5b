@@ -30,7 +30,7 @@ Route::group(['middleware' => 'auth'],function() {
         Route::get('detail/{username}', '\App\Http\Controllers\UserController@getDetailUser');
         Route::get('get_add_user', '\App\Http\Controllers\UserController@getAddUser')->name('user/get_add_user');
         Route::post('add_user', '\App\Http\Controllers\UserController@addUser')->name('user/add_user');
-
+        Route::get('/edit/{username}', '\App\Http\Controllers\UserController@editUser');
 
     });
     Route::group(['prefix' => 'exercise'], function () {
