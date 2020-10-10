@@ -30,8 +30,9 @@ Route::group(['middleware' => 'auth'],function() {
         Route::get('detail/{username}', '\App\Http\Controllers\UserController@getDetailUser');
         Route::get('get_add_user', '\App\Http\Controllers\UserController@getAddUser')->name('user/get_add_user');
         Route::post('add_user', '\App\Http\Controllers\UserController@addUser')->name('user/add_user');
-        Route::get('/edit/{username}', '\App\Http\Controllers\UserController@editUser');
-
+        Route::get('/getEdit/{username}', '\App\Http\Controllers\UserController@getEditUser');
+        Route::post('/edit', '\App\Http\Controllers\UserController@editUser')->name('user/edit');
+        Route::get('/dele/{username}', '\App\Http\Controllers\UserController@deleteUser');
     });
     Route::group(['prefix' => 'exercise'], function () {
         Route::post('add_exercise',
