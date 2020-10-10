@@ -7,173 +7,44 @@
     <div class="row mt-5">
         <div class="col-sm-4 card" style="overflow:scroll; height: 400px">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <div class="d-flex w-100 justify-content-between">
-                        <a class="mb-1">Name</a>
-                    </div>
-                    <p>Last msg</p>
-                </li>
-                <li class="list-group-item">
-                    <div class="d-flex w-100 justify-content-between">
-                        <a class="mb-1">Name</a>
-                    </div>a
-                    <p>Last msg</p>
-                </li>
-                <li class="list-group-item">
-                    <div class="d-flex w-100 justify-content-between">
-                        <a class="mb-1">Name</a>
-                    </div>
-                    <p>Last msg</p>
-                </li>
-                <li class="list-group-item">
-                    <div class="d-flex w-100 justify-content-between">
-                        <a class="mb-1">Name</a>
-                    </div>
-                    <p>Last msg</p>
-                </li>
-                <li class="list-group-item">
-                    <div class="d-flex w-100 justify-content-between">
-                        <a class="mb-1">Name</a>
-                    </div>
-                    <p>Last msg</p>
-                </li>
-                <li class="list-group-item">
-                    <div class="d-flex w-100 justify-content-between">
-                        <a class="mb-1">Name</a>
-                    </div>
-                    <p>Last msg</p>
-                </li>
-                <li class="list-group-item">
-                    <div class="d-flex w-100 justify-content-between">
-                        <a class="mb-1">Name</a>
-                    </div>
-                    <p>Last msg</p>
-                </li>
-                <li class="list-group-item">
-                    <div class="d-flex w-100 justify-content-between">
-                        <a class="mb-1">Name</a>
-                    </div>
-                    <p>Last msg</p>
-                </li>
-                <li class="list-group-item">
-                    <div class="d-flex w-100 justify-content-between">
-                        <a class="mb-1">Name</a>
-                    </div>
-                    <p>Last msg</p>
-                </li>
-                <li class="list-group-item">
-                    <div class="d-flex w-100 justify-content-between">
-                        <a class="mb-1">Name</a>
-                    </div>
-                    <p>Last msg</p>
-                </li>
-                <li class="list-group-item">
-                    <div class="d-flex w-100 justify-content-between">
-                        <a class="mb-1">Name</a>
-                    </div>
-                    <p>Last msg</p>
-                </li>
-
+                @foreach($users as $user)
+                    <li class="list-group-item">
+                        <div class="d-flex w-100 justify-content-between">
+                            <a href="/messages/{{$user->username}}" class="mb-1">{{$user->name}}</a>
+                        </div>
+                    </li>
+                @endforeach
             </ul>
         </div>
 
-
         <div class="col-sm-8 w-75">
-            <div>To username</div>
+            <div>To: {{$to_user}}</div>
             <div style="overflow-y: scroll; height: 338px">
                 <table class="table table-fixed">
                     <tbody>
-                    <tr>
-                        <td style="float: right;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: left;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: right;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: left;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: right;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: left;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: right;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: left;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: right;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: left;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: right;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: left;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: right;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: left;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: right;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: left;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: right;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: left;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: right;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: left;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: right;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: left;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: right;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: left;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: right;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: left;">ABCDE</td>
-                    </tr>
-                    <tr>
-                        <td style="float: right;">ABCDE</td>
-                    </tr>
+                    @foreach($messages as $message)
+                        <tr>
+{{--                            @if($message->to_username == $to_username)--}}
+{{--                                <td style="float: left;">--}}
+{{--                            @else--}}
+{{--                                <td style="float: right;">--}}
+{{--                                    @endif--}}
+{{--                                    {{$message->message}} </td>--}}
+                            <td>{{$message->message}}ABC</td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
 
             </div>
-            <form class="row" action="">
+            <form class="row" action="{{route('messages/send_message')}}" method="POST">
+                @csrf
+                <input class="d-none" name="to_user" value="{{$to_username}}">
                 <div class="col-lg-11">
-                    <input type="text" placeholder="Message..." class="form-control" [(ngModel)]="message"/>
+                    <input type="text" placeholder="Message..." class="form-control" name="message_input">
                 </div>
                 <div class="col-xs-3">
-                    <button class="btn btn-info btn-block" (click)=""><i class="far fa-paper-plane"></i></button>
+                    <button type="submit" class="btn btn-info btn-block"><i class="far fa-paper-plane"></i></button>
                 </div>
             </form>
 

@@ -87,8 +87,10 @@ class UserController extends Controller
         }
         return redirect(session()->get('previous-url'));
     }
-    public function deleteUser($username) {
+
+    public function deleteUser($username)
+    {
         User::where('username', $username)->delete();
-        return redirect()->action('\App\Http\Controllers\UserController@getListUser');
+        return view();
     }
 }

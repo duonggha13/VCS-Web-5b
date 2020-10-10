@@ -38,7 +38,7 @@
         <div class="dropdown-menu dropdown-menu-right">
             <a class="dropdown-item" href="{{ route('user') }}">Danh sách lớp học</a>
             <a class="dropdown-item" href="{{ route('profile') }}">Thông tin cá nhân</a>
-            <a class="dropdown-item" href="{{ route('messages') }}">Tin nhắn</a>
+            <a class="dropdown-item" href="messages\{{Auth::user()->username}}">Tin nhắn</a>
             <a class="dropdown-item" href="{{ route('logout') }}">Đăng xuất</a>
         </div>
     </div>

@@ -69,27 +69,31 @@
                     <th></th>
                 </tr>
                 </thead>
-                <tbody class="col-sm">
                 @foreach($quiz as $q)
+                <tbody class="col-sm">
                     <tr>
                         <td>{{$q->id}}</td>
                         <td class="textoverflow">
                             <span>{{$q->hint}}</span>
                         </td>
                         <td>
-                            <form class="form-inline" action="">
+                            @if(Auth::user()->level == 0)
+                            <form class="form-inline" action="{{route('quiz/checkans')}}" enctype="multipart/form-data" method="POST">
+                                @csrf
+                                <input class="d-none" name="filequiz" value="{{$q->linkfiletxt}}">
                                 <div class="form-group ml-auto">
                                     <input type="text" class="form-control form-control-sm" placeholder="Nhập đáp án"
                                            name="ansquiz">
                                 </div>
                                 <div class="form-group">
-                                    <button class="form-control form-control-sm" name="checkans">Kiểm tra</button>
+                                    <button type="submit" class="form-control form-control-sm">Kiểm tra</button>
                                 </div>
                             </form>
+                            @endif
                         </td>
                     </tr>
-                @endforeach
                 </tbody>
+                @endforeach
             </table>
         </div>
 @endsection

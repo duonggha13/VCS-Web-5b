@@ -2,11 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Messages;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class MessagesController extends Controller
 {
-    public function getListMessages() {
-        return view('auth.list_messages');
+    public function getMessagesToUser($username)
+    {
+        $to_user = User::where('username', $username)->first()->name;
+        $users = User::all();
+        $auth = Auth::user()->username;
+//        $messages = Messages::where(DB::raw("('from_username'='$username' and 'to_username'='$auth') or ('from_username'='$auth' and 'to_username'='$username')"))
+//            ->get();
+        $messages = Messages::where('to_username', $username);
+        return view('auth.list_messages', ['users'=>$users,'messages'=>$messages,'to_user'=>$to_user,'to_username'=>$username]);
+    }
+    public function sendMessage(Request $request) {
+        $mess = new Messages();
+        $mess->message = $request->message_input;
+        $mess->to_username = $request->to_user;
+        $mess->from_username = Auth::user()->username;
+        $mess->save();
+        return redirect()->back();
     }
 }

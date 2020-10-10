@@ -144,7 +144,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602310492365</updated>
-      <workItem from="1602310493389" duration="23672000" />
+      <workItem from="1602310493389" duration="40489000" />
     </task>
     <servers />
   </component>
@@ -152,9 +152,13 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="505" y="323" width="399" height="156" key="NewPhpFileDialog" timestamp="1602318013634">
+    <state x="443" y="155" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602351788238">
       <screen x="54" y="27" width="1312" height="741" />
     </state>
-    <state x="505" y="323" width="399" height="156" key="NewPhpFileDialog/54.27.1312.741@54.27.1312.741" timestamp="1602318013634" />
+    <state x="443" y="155" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/54.27.1312.741@54.27.1312.741" timestamp="1602351788238" />
+    <state x="505" y="323" width="399" height="156" key="NewPhpFileDialog" timestamp="1602355621137">
+      <screen x="54" y="27" width="1312" height="741" />
+    </state>
+    <state x="505" y="323" width="399" height="156" key="NewPhpFileDialog/54.27.1312.741@54.27.1312.741" timestamp="1602355621137" />
   </component>
 </project>

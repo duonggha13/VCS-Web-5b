@@ -29,4 +29,13 @@ class QuizController extends Controller
         $quiz->save();
         return redirect()->action('\App\Http\Controllers\QuizController@getListQuiz');
     }
+    public function checkAnsQuiz(Request $request) {
+        $ans = $request->ansquiz;
+        $link = $request->filequiz;
+        $linkans = $ans.'.txt';
+        $linkroot='document/quiz/'.$link;
+        if (strtoupper($linkans) == strtoupper($link)) {
+            return view('auth.content_file', ['linkfile'=>$linkroot]);
+        } else return redirect()->back()->with('alert','Bạn trả lời sai rồi');
+    }
 }

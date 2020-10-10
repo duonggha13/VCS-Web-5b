@@ -14,7 +14,8 @@ class CreateExerciseTable extends Migration
     public function up()
     {
         Schema::create('exercise', function (Blueprint $table) {
-            $table->string('topic')->primary();
+            $table->increments('id');
+            $table->string('topic');
             $table->string('exercise');
             $table->string('solution');
         });
