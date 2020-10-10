@@ -24,13 +24,16 @@
                     <tbody>
                     @foreach($messages as $message)
                         <tr>
-{{--                            @if($message->to_username == $to_username)--}}
-{{--                                <td style="float: left;">--}}
-{{--                            @else--}}
-{{--                                <td style="float: right;">--}}
-{{--                                    @endif--}}
-{{--                                    {{$message->message}} </td>--}}
-                            <td>{{$message->message}}ABC</td>
+                            @if($message->to_username == $to_username)
+                                <td style="float: right;">
+                                <a href="/messages/edit/{{$message->id}}"><i class="fas fa-edit"></i></a>
+                                <a href="/messages/dele/{{$message->id}}"><i class="far fa-trash-alt"></i></a>
+                                {{$message->message}}</td>
+                            @else
+                                <td style="float: left;">{{$message->message}} </td>
+                            @endif
+
+
                         </tr>
                     @endforeach
                     </tbody>

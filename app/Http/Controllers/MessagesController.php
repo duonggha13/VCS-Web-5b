@@ -15,9 +15,8 @@ class MessagesController extends Controller
         $to_user = User::where('username', $username)->first()->name;
         $users = User::all();
         $auth = Auth::user()->username;
-//        $messages = Messages::where(DB::raw("('from_username'='$username' and 'to_username'='$auth') or ('from_username'='$auth' and 'to_username'='$username')"))
-//            ->get();
-        $messages = Messages::where('to_username', $username);
+
+     $messages = DB::select( DB::raw("SELECT * FROM `messages` WHERE (from_username='$username' and to_username='$auth') or (from_username='$auth' and to_username='$username')"));
         return view('auth.list_messages', ['users'=>$users,'messages'=>$messages,'to_user'=>$to_user,'to_username'=>$username]);
     }
     public function sendMessage(Request $request) {
