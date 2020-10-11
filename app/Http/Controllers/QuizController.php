@@ -29,9 +29,8 @@ class QuizController extends Controller
         $quiz->save();
         return redirect()->action('\App\Http\Controllers\QuizController@getListQuiz');
     }
-    public function checkAnsQuiz(Request $request) {
+    public function checkAnsQuiz(Request $request, $link) {
         $ans = $request->ansquiz;
-        $link = $request->filequiz;
         $linkans = $ans.'.txt';
         $linkroot='document/quiz/'.$link;
         if (strtoupper($linkans) == strtoupper($link)) {

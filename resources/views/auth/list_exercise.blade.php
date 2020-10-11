@@ -84,10 +84,9 @@
                     </td>
                     @if (Auth::user()->level==0)
                         <td>
-                            <form action="{{route('exercise/upload_solution')}}" enctype="multipart/form-data"
+                            <form action="{{route('exercise/upload_solution', $exercise->topic)}}" enctype="multipart/form-data"
                                   method="POST">
                                 @csrf
-                                <input class="d-none" name="topic" value="{{$exercise->topic}}">
                                 <div class="file mb-3">
                                     <input type="file" id="customFile" name="filename">
                                 </div>

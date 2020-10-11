@@ -16,15 +16,34 @@ class MessagesController extends Controller
         $users = User::all();
         $auth = Auth::user()->username;
 
-     $messages = DB::select( DB::raw("SELECT * FROM `messages` WHERE (from_username='$username' and to_username='$auth') or (from_username='$auth' and to_username='$username')"));
-        return view('auth.list_messages', ['users'=>$users,'messages'=>$messages,'to_user'=>$to_user,'to_username'=>$username]);
+        $messages = DB::select(DB::raw("SELECT * FROM `messages` WHERE (from_username='$username' and to_username='$auth') or (from_username='$auth' and to_username='$username')"));
+        return view('auth.list_messages',
+            ['users' => $users, 'messages' => $messages, 'to_user' => $to_user, 'to_username' => $username]);
     }
-    public function sendMessage(Request $request) {
+
+    public function sendMessage(Request $request)
+    {
         $mess = new Messages();
         $mess->message = $request->message_input;
         $mess->to_username = $request->to_user;
         $mess->from_username = Auth::user()->username;
         $mess->save();
+        return redirect()->back();
+    }
+
+    public function deleMessage($idMessage)
+    {
+        Messages::where('id', $idMessage)->delete();
+        return redirect()->back();
+    }
+    public function editMessage(Request $request, $idMessage) {
+        $new_mess = $request->mess_edited;
+        if ($new_mess == "") Messages::where('id', $idMessage)->delete();
+        else Messages::where('id', $idMessage)
+            ->first()
+            ->update([
+                'message'=>$new_mess
+            ]);
         return redirect()->back();
     }
 }

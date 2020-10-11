@@ -1,11 +1,8 @@
 @extends('layouts.index')
 @section('content')
 
-    <form role="form" class="mt-5" action="{{route('user/edit')}}" method="POST">
+    <form role="form" class="mt-5" action="{{route('user/edit',$user->username)}}" method="POST">
         @csrf
-        <div class="form-group row d-none">
-            <input class="form-control" type="text" name="username_edit" value={{$user->username}}>
-        </div>
         <div class="form-group row">
             <label class="col-lg-3 col-form-label form-control-label font-weight-bold">Tên đăng nhập</label>
             <div class="col-lg-9">
@@ -21,7 +18,7 @@
         <div class="form-group row">
             <label class="col-lg-3 col-form-label form-control-label font-weight-bold">Họ tên</label>
             <div class="col-lg-9">
-                <input class="form-control" type="text" name="name" value={{$user->name}} @if (Auth::user()->level == 0) readonly @endif>
+                <input class="form-control" name="name" value="{{$user->name}}" @if (Auth::user()->level == 0) readonly @endif>
             </div>
         </div>
         <div class="form-group row">

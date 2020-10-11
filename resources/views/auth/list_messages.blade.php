@@ -18,7 +18,7 @@
         </div>
 
         <div class="col-sm-8 w-75">
-            <div>To: {{$to_user}}</div>
+            <h5 class="text-center font-weight-bold">To: {{$to_user}}</h5>
             <div style="overflow-y: scroll; height: 338px">
                 <table class="table table-fixed">
                     <tbody>
@@ -26,9 +26,25 @@
                         <tr>
                             @if($message->to_username == $to_username)
                                 <td style="float: right;">
-                                <a href="/messages/edit/{{$message->id}}"><i class="fas fa-edit"></i></a>
-                                <a href="/messages/dele/{{$message->id}}"><i class="far fa-trash-alt"></i></a>
-                                {{$message->message}}</td>
+                                    <a href="#" data-toggle="collapse" data-target="#editMess{{$message->id}}"><i
+                                            class="fas fa-edit"></i></a>
+                                    <div id="editMess{{$message->id}}" class="collapse">
+                                        <form class="form-inline" action="{{route('messages/edit', $message->id)}}"
+                                              enctype="multipart/form-data" method="POST">
+                                            @csrf
+                                            <div class="form-group ml-auto">
+                                                <input type="text" class="form-control form-control-sm"
+                                                       value="{{$message->message}}"
+                                                       name="mess_edited">
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="form-control form-control-sm">Gửi lại
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <a href="/messages/dele/{{$message->id}}"><i class="far fa-trash-alt"></i></a>
+                                    {{$message->message}}</td>
                             @else
                                 <td style="float: left;">{{$message->message}} </td>
                             @endif

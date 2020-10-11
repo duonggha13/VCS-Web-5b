@@ -78,9 +78,8 @@
                         </td>
                         <td>
                             @if(Auth::user()->level == 0)
-                            <form class="form-inline" action="{{route('quiz/checkans')}}" enctype="multipart/form-data" method="POST">
+                            <form class="form-inline" action="{{route('quiz/checkans', $q->linkfiletxt)}}" enctype="multipart/form-data" method="POST">
                                 @csrf
-                                <input class="d-none" name="filequiz" value="{{$q->linkfiletxt}}">
                                 <div class="form-group ml-auto">
                                     <input type="text" class="form-control form-control-sm" placeholder="Nhập đáp án"
                                            name="ansquiz">

@@ -11,8 +11,8 @@ class ExerciseController extends Controller
     public function getListExercise()
     {
         $exercises = Exercise::select('topic')->distinct('')->get();
-        $self_solution = Exercise::select('topic', 'solution')->where('user_submit',Auth::user()->username);
-        return view('auth.list_exercise')->with(['exercises'=>$exercises,'self_solution'=>$self_solution]);
+        $self_solution = Exercise::select('topic', 'solution')->where('user_submit', Auth::user()->username);
+        return view('auth.list_exercise')->with(['exercises' => $exercises, 'self_solution' => $self_solution]);
     }
 
     public function addExercise(Request $request)
@@ -26,7 +26,7 @@ class ExerciseController extends Controller
         } else {
             echo "Chưa có file";
         }
-        $link = 'document/exercise/'. $request->file('filename')->getClientOriginalName();
+        $link = 'document/exercise/' . $request->file('filename')->getClientOriginalName();
         $exercise = new Exercise();
         $exercise->topic = $request->topic;
         $exercise->exercise = $link;
@@ -35,8 +35,9 @@ class ExerciseController extends Controller
         $exercise->save();
         return redirect()->action('\App\Http\Controllers\ExerciseController@getListExercise');
     }
-    public function uploadSolution(Request $request) {
-        $topic = $request->topic;
+
+    public function uploadSolution(Request $request, $topic)
+    {
         $exercise_upload = Exercise::where('topic', $topic)->first()->exercise;
         if ($request->hasFile('filename')) {
             $file = $request->file('filename');
@@ -47,22 +48,11 @@ class ExerciseController extends Controller
         } else {
             echo "Chưa có file";
         }
-        $link = 'document/solution/'. $request->file('filename')->getClientOriginalName();
-        $check_submited = Exercise::where('topic', '=', $topic)->where('user_submit', '=', Auth::user()->username);
-        if ($check_submited) {
-            $check_submited
-                ->update([
-                    'exercise' => $link
-                ]);
-        }
-        else {
-            $exercise = new Exercise();
-            $exercise->topic = $topic;
-            $exercise->exercise = $exercise_upload;
-            $exercise->solution = $link;
-            $exercise->user_submit = Auth::user()->username;
-            $exercise->save();
-        }
+        $link = 'document/solution/' . $request->file('filename')->getClientOriginalName();
+        Exercise::updateOrCreate(
+            ['exercise' => $exercise_upload, 'topic' => $topic, 'user_submit' => Auth::user()->username],
+            ['id'=>'null','solution' => $link]
+    );
         return redirect()->action('\App\Http\Controllers\ExerciseController@getListExercise');
     }
 }

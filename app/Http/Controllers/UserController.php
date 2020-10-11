@@ -55,12 +55,12 @@ class UserController extends Controller
         return view('auth.edit_user', ['user' => $user]);
     }
 
-    public function editUser(Request $request)
+    public function editUser(Request $request, $username)
     {
-        $username_edit = $request->username_edit;
+        $username_edit = $username;
         $user_edit = User::where('username', $username_edit)->first();
         $password_new = $request->password;
-        if ($username_edit == $request->username) {
+        if ($username_edit == $username) {
             if ($request->password == "") {
                 $password_new = $user_edit->password;
             }
@@ -85,7 +85,7 @@ class UserController extends Controller
                 'phone_number' => $request->phone_number
             ]);
         }
-        return redirect(session()->get('previous-url'));
+        return redirect()->back();
     }
 
     public function deleteUser($username)

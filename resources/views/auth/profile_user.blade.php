@@ -9,7 +9,6 @@
             <span>Email: {{Auth::user()->email}}</span><br>
             <span>Số điện thoại: {{Auth::user()->phone_number}}</span>
         </div>
-        {{ session()->put('previous-url', request()->url())}}
         <a href="/user/getEdit/{{Auth::user()->username}}" class="m-5" style="cursor: pointer;" title="Sửa thông tin"><i class="fas fa-pencil-alt"></i></a>
 
     </div>

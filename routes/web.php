@@ -30,19 +30,21 @@ Route::group(['middleware' => 'auth'],function() {
         Route::get('get_add_user', '\App\Http\Controllers\UserController@getAddUser')->name('user/get_add_user');
         Route::post('add_user', '\App\Http\Controllers\UserController@addUser')->name('user/add_user');
         Route::get('/getEdit/{username}', '\App\Http\Controllers\UserController@getEditUser');
-        Route::post('/edit', '\App\Http\Controllers\UserController@editUser')->name('user/edit');
+        Route::post('/edit/{username}', '\App\Http\Controllers\UserController@editUser')->name('user/edit');
         Route::get('/dele/{username}', '\App\Http\Controllers\UserController@deleteUser');
     });
     Route::group(['prefix' => 'exercise'], function () {
         Route::post('add_exercise', '\App\Http\Controllers\ExerciseController@addExercise')->name('exercise/add_exercise');
-        Route::post('upload_solution', '\App\Http\Controllers\ExerciseController@uploadSolution')->name('exercise/upload_solution');
+        Route::post('upload_solution/{topic}', '\App\Http\Controllers\ExerciseController@uploadSolution')->name('exercise/upload_solution');
     });
     Route::group(['prefix' => 'quiz'], function () {
         Route::post('add_quiz', '\App\Http\Controllers\QuizController@addQuiz')->name('quiz/add_quiz');
-        Route::post('checkans', '\App\Http\Controllers\QuizController@checkAnsQuiz')->name('quiz/checkans');
+        Route::post('checkans/{linkfiletxt}', '\App\Http\Controllers\QuizController@checkAnsQuiz')->name('quiz/checkans');
     });
     Route::group(['prefix' => 'messages'], function () {
         Route::get('/{username}', '\App\Http\Controllers\MessagesController@getMessagesToUser');
         Route::post('send_message', '\App\Http\Controllers\MessagesController@sendMessage')->name('messages/send_message');
+        Route::get('/dele/{idMessage}', '\App\Http\Controllers\MessagesController@deleMessage');
+        Route::post('messages/edit/{idMessage}', '\App\Http\Controllers\MessagesController@editMessage')->name('messages/edit');
     });
 });
