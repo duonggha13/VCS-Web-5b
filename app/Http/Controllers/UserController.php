@@ -59,7 +59,7 @@ class UserController extends Controller
     {
         $username_edit = $username;
         $user_edit = User::where('username', $username_edit)->first();
-        $password_new = $request->password;
+        $password_new = bcrypt($request->password);
         if ($username_edit == $request->username) {
             if ($request->password == "") {
                 $password_new = $user_edit->password;
@@ -68,7 +68,7 @@ class UserController extends Controller
                 ->first()
                 ->update([
                     'name' => $request->name,
-                    'password' => bcrypt($password_new),
+                    'password' => $password_new,
                     'email' => $request->email,
                     'phone_number' => $request->phone_number
                 ]);
@@ -80,7 +80,7 @@ class UserController extends Controller
             User::insert([
                 'username' => $request->username,
                 'name' => $request->name,
-                'password' => bcrypt($password_new),
+                'password' => $password_new,
                 'email' => $request->email,
                 'phone_number' => $request->phone_number,
                 'level' => $username_edit->level
