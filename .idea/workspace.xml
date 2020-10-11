@@ -3,20 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4cb1b9df-b2c4-41f2-bff0-0df842888354" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ExerciseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ExerciseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MessagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MessagesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_09_070355_create_users_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/document/quiz/song.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/add_user.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/add_user.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/edit_user.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/edit_user.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/list_exercise.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/list_exercise.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/list_messages.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/list_messages.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/list_quiz.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/list_quiz.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/list_user.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/list_user.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/detail_user.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/detail_user.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

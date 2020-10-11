@@ -92,6 +92,6 @@ class UserController extends Controller
     public function deleteUser($username)
     {
         User::where('username', $username)->delete();
-        return view();
+        return redirect()->action('\App\Http\Controllers\UserController@getListUser');
     }
 }
