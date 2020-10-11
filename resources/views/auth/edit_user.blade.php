@@ -1,7 +1,7 @@
 @extends('layouts.index')
 @section('content')
 
-    <form role="form" class="mt-5" action="{{route('user/edit',$user->username)}}" method="POST">
+    <form role="form" class="mt-5" action="{{route('/user/edit',$user->username)}}" method="POST">
         @csrf
         <div class="form-group row">
             <label class="col-lg-3 col-form-label form-control-label font-weight-bold">Tên đăng nhập</label>

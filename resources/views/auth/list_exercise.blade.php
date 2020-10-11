@@ -27,7 +27,7 @@
 @endsection
 @section('content')
     @if (Auth::user()->level == 1)
-        <form action="{{route("exercise/add_exercise")}}" enctype="multipart/form-data" method="POST" class="mt-5">
+        <form action="{{route("/exercise/add_exercise")}}" enctype="multipart/form-data" method="POST" class="mt-5">
             @csrf
             <div class="form-group">
                 <input type="text" class="form-control form-control-sm" placeholder="Chủ đề bài tập" name="topic">
@@ -58,33 +58,39 @@
                 <th>Bài giải</th>
                 @if (Auth::user()->level==0)
                     <th>Nộp bài</th>
-                    <th></th>
                 @endif
             </tr>
             </thead>
             <tbody>
-            @foreach($exercises as $exercise)
+            @foreach($topics as $topic)
                 <tr>
-                    <td>{{$exercise->topic}}</td>
-                    <td><a href={{$exercise->exercise}} download>Tải xuống</a></td>
+                    <td>{{$topic->topic}}</td>
                     <td>
-                        @if (Auth::user()->leverl == 0 and $exercise->user_submit == Auth::user()->username)
-                            <ul style="overflow:auto;
-                        list-style-type: none;
-                         height:50px;">
-                                <li>{{$exercise->solution}}</li>
-                            </ul>
-                        @else
-                            <ul style="overflow:auto;
-                        list-style-type: none;
-                         height:50px;">
-                                <li>{{$exercise->solution}}</li>
-                            </ul>
-                        @endif
+                        @foreach($exercises as $exercise)
+                            @if($exercise->topic == $topic->topic)
+                                <a href="{{$exercise->exercise}}" download>Tải xuống</a>
+                                @break
+                            @endif
+                        @endforeach
+                    </td>
+                    <td>
+                        @foreach($exercises as $exercise)
+                            @if (Auth::user()->level==0 and $exercise->topic == $topic->topic and $exercise->user_submit == Auth::user()->username)
+                                <a href="{{$exercise->solution}}" download>Tải xuống</a>
+                            @elseif (Auth::user()->level==1 and $exercise->solution!='null' and $exercise->topic == $topic->topic)
+                                <ul style="overflow:auto;
+                                                    list-style-type: none;
+                                                    height:50px;">
+                                    <li>{{$exercise->user_submit}}: <a href="{{$exercise->solution}}">Tải xuống</a></li>
+                                </ul>
+                            @endif
+                        @endforeach
                     </td>
                     @if (Auth::user()->level==0)
+
                         <td>
-                            <form action="{{route('exercise/upload_solution', $exercise->topic)}}" enctype="multipart/form-data"
+                            <form action="{{route('/exercise/upload_solution', $topic->topic)}}"
+                                  enctype="multipart/form-data"
                                   method="POST">
                                 @csrf
                                 <div class="file mb-3">

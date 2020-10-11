@@ -39,7 +39,7 @@
 
 @section('content')
     @if (Auth::user()->level == 1)
-    <form action="{{route("quiz/add_quiz")}}" enctype="multipart/form-data" method="POST" class="mt-5">
+    <form action="{{route("/quiz/add_quiz")}}" enctype="multipart/form-data" method="POST" class="mt-5">
         @csrf
         <div class="custom-file">
             <input type="file" class="custom-file-input" id="customFile" name="filename">
@@ -78,7 +78,7 @@
                         </td>
                         <td>
                             @if(Auth::user()->level == 0)
-                            <form class="form-inline" action="{{route('quiz/checkans', $q->linkfiletxt)}}" enctype="multipart/form-data" method="POST">
+                            <form class="form-inline" action="{{route('/quiz/checkans', $q->linkfiletxt)}}" enctype="multipart/form-data" method="POST">
                                 @csrf
                                 <div class="form-group ml-auto">
                                     <input type="text" class="form-control form-control-sm" placeholder="Nhập đáp án"

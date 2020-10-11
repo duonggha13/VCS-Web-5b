@@ -21,11 +21,11 @@ class MessagesController extends Controller
             ['users' => $users, 'messages' => $messages, 'to_user' => $to_user, 'to_username' => $username]);
     }
 
-    public function sendMessage(Request $request)
+    public function sendMessage(Request $request, $to_username)
     {
         $mess = new Messages();
         $mess->message = $request->message_input;
-        $mess->to_username = $request->to_user;
+        $mess->to_username = $to_username;
         $mess->from_username = Auth::user()->username;
         $mess->save();
         return redirect()->back();

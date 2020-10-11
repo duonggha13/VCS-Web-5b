@@ -60,7 +60,7 @@ class UserController extends Controller
         $username_edit = $username;
         $user_edit = User::where('username', $username_edit)->first();
         $password_new = $request->password;
-        if ($username_edit == $username) {
+        if ($username_edit == $request->username) {
             if ($request->password == "") {
                 $password_new = $user_edit->password;
             }
@@ -82,7 +82,8 @@ class UserController extends Controller
                 'name' => $request->name,
                 'password' => bcrypt($password_new),
                 'email' => $request->email,
-                'phone_number' => $request->phone_number
+                'phone_number' => $request->phone_number,
+                'level' => $username_edit->level
             ]);
         }
         return redirect()->back();

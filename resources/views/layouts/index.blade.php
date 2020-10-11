@@ -20,10 +20,10 @@
             <a class="nav-link" href="/home"><i class="fas fa-book-open"></i> Classroom</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('exercise') }}">Bài tập</a>
+            <a class="nav-link" href="{{ route('/exercise') }}">Bài tập</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('quiz') }}">Giải đố</a>
+            <a class="nav-link" href="{{ route('/quiz') }}">Giải đố</a>
         </li>
     </ul>
 
@@ -36,13 +36,13 @@
             @endif
         </a>
         <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" href="{{ route('user') }}">Danh sách lớp học</a>
-            <a class="dropdown-item" href="{{ route('profile') }}">Thông tin cá nhân</a>
+            <a class="dropdown-item" href="{{ route('/user') }}">Danh sách lớp học</a>
+            <a class="dropdown-item" href="{{ route('/profile') }}">Thông tin cá nhân</a>
             @if (Auth::user())
-            <a class="dropdown-item" href="messages\{{Auth::user()->username}}">Tin nhắn</a>
-            @else <a class="dropdown-item" href="messages">Tin nhắn</a>
+            <a class="dropdown-item" href="/messages/{{Auth::user()->username}}">Tin nhắn</a>
+            @else <a class="dropdown-item" href="/messages">Tin nhắn</a>
             @endif
-            <a class="dropdown-item" href="{{ route('logout') }}">Đăng xuất</a>
+            <a class="dropdown-item" href="{{ route('/logout') }}">Đăng xuất</a>
         </div>
     </div>
 

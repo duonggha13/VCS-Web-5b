@@ -29,7 +29,7 @@
                                     <a href="#" data-toggle="collapse" data-target="#editMess{{$message->id}}"><i
                                             class="fas fa-edit"></i></a>
                                     <div id="editMess{{$message->id}}" class="collapse">
-                                        <form class="form-inline" action="{{route('messages/edit', $message->id)}}"
+                                        <form class="form-inline" action="{{route('/messages/edit', $message->id)}}"
                                               enctype="multipart/form-data" method="POST">
                                             @csrf
                                             <div class="form-group ml-auto">
@@ -56,9 +56,8 @@
                 </table>
 
             </div>
-            <form class="row" action="{{route('messages/send_message')}}" method="POST">
+            <form class="row" action="{{route('/messages/send_message', $to_username)}}" method="POST">
                 @csrf
-                <input class="d-none" name="to_user" value="{{$to_username}}">
                 <div class="col-lg-11">
                     <input type="text" placeholder="Message..." class="form-control" name="message_input">
                 </div>
