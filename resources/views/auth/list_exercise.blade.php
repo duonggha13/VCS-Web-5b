@@ -77,13 +77,16 @@
                         @foreach($exercises as $exercise)
                             @if (Auth::user()->level==0 and $exercise->topic == $topic->topic and $exercise->user_submit == Auth::user()->username)
                                 <a href="{{$exercise->solution}}" download>Tải xuống</a>
-                            @elseif (Auth::user()->level==1 and $exercise->solution!='null' and $exercise->topic == $topic->topic)
                                 <ul style="overflow:auto;
                                                     list-style-type: none;
-                                                    height:50px;">
+                                                    height:50px;
+                                                    list-style: none;
+                                    padding-left: 0;">
+                            @elseif (Auth::user()->level==1 and $exercise->solution!='null' and $exercise->topic == $topic->topic)
+
                                     <li>{{$exercise->user_submit}}: <a href="{{$exercise->solution}}">Tải xuống</a></li>
-                                </ul>
                             @endif
+                                </ul>
                         @endforeach
                     </td>
                     @if (Auth::user()->level==0)
